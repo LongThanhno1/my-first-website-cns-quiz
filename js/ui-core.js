@@ -123,6 +123,7 @@ function onChucDanhChange() {
     grpVT.style.opacity = '0.35';
     grpVT.style.pointerEvents = 'none';
   }
+  grpMod.style.display = ''; // [ATCO] reset phòng trường hợp lần chọn trước đã ẩn hẳn (display:none)
   grpMod.style.opacity = '0.35';
   grpMod.style.pointerEvents = 'none';
 }
@@ -135,6 +136,19 @@ function onViTriChange() {
 
   selMod.innerHTML = '<option value="">— Chọn module —</option>';
   $('btnStart').disabled = true;
+
+  // [ATCO] Không có module để chọn (chỉ 1 khối "Lý thuyết chung ATC") — ẩn hẳn
+  // dropdown module, tự động gán module='ATCO' và cho phép bắt đầu luôn.
+  if (cd === 'ATCO' && vt) {
+    grpMod.style.display = 'none';
+    selMod.innerHTML = '<option value="ATCO" selected>ATCO</option>';
+    selMod.value = 'ATCO';
+    selMod.disabled = false;
+    $('btnStart').disabled = false;
+    if (typeof onModuleChange === 'function') onModuleChange();
+    return;
+  }
+  grpMod.style.display = '';
 
   if (cd && vt) {
     const mIds = (LOCATION_MODULE_MAP[cd] && LOCATION_MODULE_MAP[cd][vt]) || [];

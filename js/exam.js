@@ -64,7 +64,8 @@ function startExam(moduleId) {
   // [SRS] Exam: tối đa 50 câu ưu tiên due-based | Quick review: CHỈ câu due, cap 50
   // [SRS] Practice: TOÀN BỘ pool, sắp câu cần ôn nhất lên đầu
   if (quizMode === 'exam') {
-    examQuestions = srsSelectQuestions(rawPool);
+    // [ATCO] Thi thử ATCO dùng quota cố định theo chủ đề, không theo cơ chế SRS due-based
+    examQuestions = (moduleId === 'ATCO') ? atcoSelectQuestions(rawPool) : srsSelectQuestions(rawPool);
   } else if (quizMode === 'quickreview') {
     examQuestions = srsSelectDueOnly(rawPool);
     if (examQuestions.length === 0) {
