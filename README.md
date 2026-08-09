@@ -210,4 +210,4 @@ Công ty Quản lý bay miền Nam (VATMSORATS) — Tổng công ty Quản lý b
 ## ⚠️ Tuyên bố miễn trừ
 
 Đây là công cụ ôn tập **không chính thức**, xây dựng với mục đích hỗ trợ học tập nội bộ.
-Không thay thế tài liệu đào tạo chính thức của VATM hoặc ICAO. Nội dung ngân hàng câu hỏi ATCO chưa được kiểm chứng nghiệp vụ chuyên sâu — chỉ dùng để tham khảo và luyện tập.
+Không thay thế tài liệu đào tạo chính thức của VATM hoặc ICAO. 
