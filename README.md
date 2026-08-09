@@ -11,7 +11,8 @@
 
 ## 📌 Giới thiệu
 
-Website ôn tập trắc nghiệm dành cho **2 chức danh**:
+Website ôn tập trắc nghiệm dành cho nhân viên kỹ thuật (ATSEP) và kiểm soát viên không lưu (ATCO):
+
 - **ATSEP** — kỹ thuật điện tử hàng không (CNS/ATM: Communication · Navigation · Surveillance)
 - **ATCO** — kiểm soát viên không lưu (lý thuyết chung)
 
