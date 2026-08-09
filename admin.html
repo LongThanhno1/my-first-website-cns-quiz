@@ -13,7 +13,7 @@
     // [BẢO MẬT] Mật khẩu được hash SHA-256, không còn lưu plaintext trong source.
     // Lưu ý: site tĩnh không có backend xác thực riêng, đây là lớp che chắn cơ bản
     // chống xem qua loa View Source, KHÔNG phải bảo mật tuyệt đối.
-    const PASS_HASH = '9b609c5197f6df1ca73770f01ada9c866b2c3335746c2cc9a5a9278d3417ec5e';
+    const PASS_HASH = '2eeb355df391856352d2a555c4c20991f165f359125d861b3bfde619991ae9e0';
     const KEY  = 'admin_auth';
     async function sha256(text) {
       const buf  = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
