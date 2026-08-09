@@ -1,5 +1,5 @@
 const questionBank = [
-  ...VHF_QUESTIONS, ...RADAR_QUESTIONS, ...SMS_QUESTIONS, ...ADSB_LT_QUESTIONS, ...GHIAM_QUESTIONS, ...ADSB_QUESTIONS, ...RDPFDP_QUESTIONS, ...VCCS_QUESTIONS, ...RADAR_TSN_QUESTIONS, ...KIPTRUONG_TSN_QUESTIONS, ...ASGMCS_QUESTIONS
+  ...VHF_QUESTIONS, ...RADAR_QUESTIONS, ...SMS_QUESTIONS, ...ADSB_LT_QUESTIONS, ...GHIAM_QUESTIONS, ...ADSB_QUESTIONS, ...RDPFDP_QUESTIONS, ...VCCS_QUESTIONS, ...RADAR_TSN_QUESTIONS, ...KIPTRUONG_TSN_QUESTIONS, ...ASGMCS_QUESTIONS, ...ATCO_QUESTIONS
 ];
 
 
@@ -17,6 +17,8 @@ const MODULE_CONFIG = [
   { id:"VCCS",       icon:"☎", label:"VCCS",       name:"VCCS (Điều khiển thoại không địa)",             draw:50, color:"#f472b6", bg:"rgba(236,72,153,0.18)", grd:"linear-gradient(135deg,#831843,#db2777)" },
   { id:"Radar-TSN",  icon:"📻", label:"Radar-TSN",  name:"Radar Tân Sơn Nhất (PSR/SSR)",                 draw:50, color:"#fb7185", bg:"rgba(251,113,133,0.18)",grd:"linear-gradient(135deg,#881337,#e11d48)" },
   { id:"KipTruong-TSN",icon:"🧑‍💼",label:"Kíp trưởng",name:"Kíp trưởng CNS Tân Sơn Nhất",               draw:50, color:"#fde047", bg:"rgba(253,224,71,0.18)", grd:"linear-gradient(135deg,#713f12,#ca8a04)" },
+  // ── ATCO ─────────────────────────────────────────────────────────────────────
+  { id:"ATCO",       icon:"🎓", label:"ATCO",       name:"Lý thuyết chung ATC",                          draw:50, color:"#c084fc", bg:"rgba(192,132,252,0.18)",grd:"linear-gradient(135deg,#581c87,#9333ea)" },
 ];
 
 
@@ -24,5 +26,8 @@ const LOCATION_MODULE_MAP = {
   "ATSEP": {
     "Long Thành":   ["VHF","Radar","SMS","ADS-B-LT"],
     "Tân Sơn Nhất": ["VHF","Ghi âm","ADS-B","RDP/FDP","VCCS","Radar-TSN","KipTruong-TSN","A-SGMCS"]
+  },
+  "ATCO": {
+    "Long Thành":   ["ATCO"]
   }
 };

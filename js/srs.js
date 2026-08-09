@@ -199,6 +199,44 @@ function srsOrderForPractice(rawPool) {
   });
 }
 
+// ── ATCO MOCK EXAM (Thi thử) — chọn câu theo quota cố định từng chủ đề (topic),
+//   KHÔNG dùng cơ chế SRS due-based như các module CNS khác, và KHÔNG xáo thứ tự
+//   đáp án (giữ nguyên A/B/C/D gốc từ ngân hàng đề). Tổng 49 câu theo quota + 1 câu
+//   ngẫu nhiên bổ sung từ bất kỳ chủ đề nào (không trùng câu đã chọn) = 50 câu.
+const ATCO_EXAM_QUOTA = {
+  'AIS':                   8,
+  'Facilities':            5,
+  'General Knowledge':     7,
+  'Human Factor':          3,
+  'Law':                   5,
+  'Meteology':             7,
+  'Navigation-Principle': 12,
+  'Operational procedure': 2
+}; // tổng quota cố định = 49, + 1 câu ngẫu nhiên bổ sung = 50
+
+function atcoSelectQuestions(rawPool) {
+  const selected  = [];
+  const usedKeys  = new Set();
+
+  Object.keys(ATCO_EXAM_QUOTA).forEach(function(topic) {
+    const quota     = ATCO_EXAM_QUOTA[topic];
+    const topicPool = shuffle(rawPool.filter(function(q) { return q.topic === topic; }));
+    topicPool.slice(0, quota).forEach(function(q) {
+      selected.push(q);
+      usedKeys.add(q.module + '-' + q.id);
+    });
+  });
+
+  // [+1] Bổ sung 1 câu ngẫu nhiên từ bất kỳ chủ đề nào chưa được chọn, để đạt đúng 50 câu
+  const remaining = shuffle(rawPool.filter(function(q) { return !usedKeys.has(q.module + '-' + q.id); }));
+  if (remaining.length > 0) selected.push(remaining[0]);
+
+  // Xáo thứ tự CÂU HỎI trong đề (đa dạng mỗi lần thi), nhưng KHÔNG xáo options
+  return shuffle(selected).map(function(q) {
+    return Object.assign({}, q, { options: q.options.slice() });
+  });
+}
+
 // ── SRS QUICK REVIEW (chỉ câu CẦN ÔN — mới + quá hạn, không pha câu chưa đến hạn) ──
 // Dùng cho nút "Ôn nhanh câu đến hạn": tập trung đúng các câu cần ôn, cap 50 để giữ
 // đúng tinh thần "nhanh" (khác Practice mode lấy toàn bộ pool).
